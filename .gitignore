@@ -3,7 +3,9 @@
 .DS_Store
 # Log file
 *.log
-
+HELP.md
+mvnw
+mvnw.cmd
 # BlueJ files
 *.ctxt
 
