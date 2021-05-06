@@ -1,11 +1,12 @@
-package com.near.springBoot.core;
+package com.near.springBoot.entity;
+
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+@Document(collection= "VEHICLE")
 public class Vehicle {
-
   @Id
   private String regNo;
   private String colour;
