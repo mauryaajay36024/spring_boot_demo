@@ -3,11 +3,15 @@ package com.near.springBoot.entity;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Document(collection= "VEHICLE")
+@Document(collection= "vehicle9")
 public class Vehicle {
   @Id
+  @GeneratedValue
+  private String id;
   private String regNo;
   private String colour;
 
@@ -19,6 +23,13 @@ public class Vehicle {
     this.colour = colour;
   }
 
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String  id) {
+    this.id = id;
+  }
   public String getRegNo() {
     return regNo;
   }
@@ -34,10 +45,9 @@ public class Vehicle {
 
   @Override
   public String toString() {
-    return "\nVehicle Registration No:" + regNo + "\nVehicle Colour:" + colour;
+    return "id=" + id +
+        ", regNo='" + regNo + '\'' +
+        ", colour='" + colour ;
   }
-
-
-
 }
 

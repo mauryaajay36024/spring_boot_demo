@@ -36,10 +36,10 @@ public class ParkingSystemController {
   }
 
   //update vehicle info
-  @PutMapping("/vehicles/{regNo}")
-  public ResponseEntity<HttpStatus> updateVehicle(@PathVariable String regNo,@RequestBody Vehicle vehicle){
+  @PutMapping("/vehicles/{id}")
+  public ResponseEntity<HttpStatus> updateVehicle(@PathVariable String id,@RequestBody Vehicle vehicle){
     try {
-      this.dbService.updateInfo(regNo,vehicle);
+      this.dbService.updateInfo(id,vehicle);
       return new ResponseEntity<>(HttpStatus.OK);
     } catch (Exception e){
     return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -48,10 +48,10 @@ public class ParkingSystemController {
 
 
   //Delete vehicle info
-  @DeleteMapping("/vehicles/{regNo}")
-  public ResponseEntity<HttpStatus> deleteVehicle(@PathVariable String regNo){
+  @DeleteMapping("/vehicles/{id}")
+  public ResponseEntity<HttpStatus> deleteVehicle(@PathVariable String id){
     try {
-      this.dbService.deleteInfo(regNo);
+      this.dbService.deleteInfo(id);
       return new ResponseEntity<>(HttpStatus.OK);
     } catch (Exception e){
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
