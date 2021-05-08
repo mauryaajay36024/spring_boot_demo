@@ -1,17 +1,12 @@
 package com.near.springBoot.entity;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
 
-import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Document(collection= "vehicle9")
+@RedisHash("vehicle_info")
 public class Vehicle {
   @Id
-  @GeneratedValue
-  private String id;
+  private Long id;
   private String regNo;
   private String colour;
 
@@ -23,11 +18,11 @@ public class Vehicle {
     this.colour = colour;
   }
 
-  public String getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(String  id) {
+  public void setId(Long id) {
     this.id = id;
   }
   public String getRegNo() {

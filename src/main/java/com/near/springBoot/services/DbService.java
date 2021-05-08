@@ -1,17 +1,15 @@
 package com.near.springBoot.services;
 import com.near.springBoot.entity.Vehicle;
-import com.near.springBoot.exception.ResourceNotFoundException;
-
-import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 
 public interface DbService {
-  List<Vehicle> printInfo();
+  Iterable<Vehicle> printInfo();
 
   Vehicle addInfo(Vehicle vehicle);
 
-  Vehicle updateInfo(String  id,Vehicle vehicle) throws ResourceNotFoundException;
+  Optional<Vehicle> updateInfo(Long  id, Vehicle vehicle);
 
-  Map<String,Boolean> deleteInfo(String id) throws ResourceNotFoundException;
+  Map<String,Boolean> deleteInfo(Long id) ;
 }
