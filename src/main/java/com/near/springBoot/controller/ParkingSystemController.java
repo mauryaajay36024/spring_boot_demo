@@ -36,14 +36,14 @@ public class ParkingSystemController {
 
   //update vehicle info
   @PutMapping("/vehicles/{id}")
-  public Optional<Vehicle> updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle) {
+  public Optional<Vehicle> updateVehicle(@PathVariable String id, @RequestBody Vehicle vehicle) {
     return this.dbService.updateInfo(id, vehicle);
   }
 
 
   //Delete vehicle info
   @DeleteMapping("/vehicles/{id}")
-  public Map<String, Boolean> deleteVehicle(@PathVariable Long id) {
+  public Map<String, Boolean> deleteVehicle(@PathVariable String id) {
     return this.dbService.deleteInfo(id);
   }
 }

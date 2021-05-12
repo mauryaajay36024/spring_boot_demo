@@ -9,7 +9,7 @@ public interface DbService {
 
   Vehicle addInfo(Vehicle vehicle);
 
-  Optional<Vehicle> updateInfo(Long  id, Vehicle vehicle);
+  Optional<Vehicle> updateInfo(String  id, Vehicle vehicle);
 
-  Map<String,Boolean> deleteInfo(Long id) ;
+  Map<String,Boolean> deleteInfo(String id) ;
 }
