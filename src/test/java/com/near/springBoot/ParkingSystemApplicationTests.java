@@ -1,10 +1,7 @@
 package com.near.springBoot;
-
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class MainTests {
+class ParkingSystemApplicationTests {
 
 	@Test
 	void contextLoads() {
