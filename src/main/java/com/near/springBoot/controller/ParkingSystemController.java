@@ -1,12 +1,14 @@
 package com.near.springBoot.controller;
-import com.near.springBoot.core.Vehicle;
+import com.near.springBoot.entity.Vehicle;
 import com.near.springBoot.services.DbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
+
+import java.util.Map;
+import java.util.Optional;
 
 
 @RestController
@@ -17,41 +19,31 @@ public class ParkingSystemController {
 
   //get all vehicle info
   @GetMapping("/vehicles")
-  public List<Vehicle> vehicleInfo(){
+  public Iterable<Vehicle> vehicleInfo() {
     return dbService.printInfo();
   }
 
   //add vehicle info
   @PostMapping("/vehicles")
-  public HttpEntity<String> addVehicleInfo(@RequestBody Vehicle vehicle){
+  public HttpEntity<String> addVehicleInfo(@RequestBody Vehicle vehicle) {
     try {
       this.dbService.addInfo(vehicle);
-      return new ResponseEntity<>(HttpStatus.OK);
-
-    } catch (Exception e){
+      return new ResponseEntity<>("Vehicle details added to the database",HttpStatus.OK);
+    } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
   //update vehicle info
-  @PutMapping("/vehicles")
-  public ResponseEntity<String> updateVehicle(@RequestBody Vehicle vehicle){
-    try {
-      this.dbService.updateInfo(vehicle);
-      return new ResponseEntity<>(HttpStatus.OK);
-    } catch (Exception e){
-    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+  @PutMapping("/vehicles/{id}")
+  public Optional<Vehicle> updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle) {
+    return this.dbService.updateInfo(id, vehicle);
   }
 
+
   //Delete vehicle info
-  @DeleteMapping("/vehicles/{regNo}")
-  public ResponseEntity<String> deleteVehicle(@PathVariable String regNo){
-    try {
-      this.dbService.deleteInfo(regNo);
-      return new ResponseEntity<>(HttpStatus.OK);
-    } catch (Exception e){
-      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+  @DeleteMapping("/vehicles/{id}")
+  public Map<String, Boolean> deleteVehicle(@PathVariable Long id) {
+    return this.dbService.deleteInfo(id);
   }
 }

@@ -1,12 +1,12 @@
-package com.near.springBoot.core;
+package com.near.springBoot.entity;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
-@Entity
+@RedisHash("vehicle_info")
 public class Vehicle {
-
   @Id
+  private Long id;
   private String regNo;
   private String colour;
 
@@ -18,6 +18,13 @@ public class Vehicle {
     this.colour = colour;
   }
 
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
   public String getRegNo() {
     return regNo;
   }
@@ -33,10 +40,9 @@ public class Vehicle {
 
   @Override
   public String toString() {
-    return "\nVehicle Registration No:" + regNo + "\nVehicle Colour:" + colour;
+    return "id=" + id +
+        ", regNo='" + regNo + '\'' +
+        ", colour='" + colour ;
   }
-
-
-
 }
 

@@ -1,14 +1,15 @@
 package com.near.springBoot.services;
-import com.near.springBoot.core.Vehicle;
-import java.util.List;
+import com.near.springBoot.entity.Vehicle;
+import java.util.Map;
+import java.util.Optional;
 
 
 public interface DbService {
-  List<Vehicle> printInfo();
+  Iterable<Vehicle> printInfo();
 
   Vehicle addInfo(Vehicle vehicle);
 
-  Vehicle updateInfo(Vehicle vehicle);
+  Optional<Vehicle> updateInfo(Long  id, Vehicle vehicle);
 
-  void deleteInfo(String regNo);
+  Map<String,Boolean> deleteInfo(Long id) ;
 }
