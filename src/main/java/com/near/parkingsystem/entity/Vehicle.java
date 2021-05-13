@@ -1,11 +1,9 @@
-package com.near.springBoot.core;
-
+package com.near.parkingsystem.core;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class Vehicle {
-
   @Id
   private String regNo;
   private String colour;

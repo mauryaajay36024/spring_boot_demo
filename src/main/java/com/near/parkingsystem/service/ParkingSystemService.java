@@ -1,9 +1,10 @@
-package com.near.springBoot.services;
-import com.near.springBoot.core.Vehicle;
+package com.near.parkingsystem.services;
+import com.near.parkingsystem.core.Vehicle;
+
 import java.util.List;
 
 
-public interface DbService {
+public interface ParkingSystemService {
   List<Vehicle> printInfo();
 
   Vehicle addInfo(Vehicle vehicle);
