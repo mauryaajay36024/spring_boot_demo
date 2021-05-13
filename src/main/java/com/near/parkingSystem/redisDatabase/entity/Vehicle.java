@@ -1,4 +1,4 @@
-package com.near.springBoot.entity;
+package com.near.parkingSystem.redisDatabase.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 

@@ -1,4 +1,4 @@
-package com.near.springBoot;
+package com.near.parkingSystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

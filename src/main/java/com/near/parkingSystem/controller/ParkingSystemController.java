@@ -1,12 +1,13 @@
-package com.near.springBoot.controller;
-import com.near.springBoot.entity.Vehicle;
-import com.near.springBoot.services.DbService;
+package com.near.parkingSystem.controller;
+import com.near.parkingSystem.redisDatabase.entity.Vehicle;
+import com.near.parkingSystem.services.ParkingSystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -15,19 +16,19 @@ import java.util.Optional;
 public class ParkingSystemController {
 
   @Autowired
-  private DbService dbService;
+  private ParkingSystemService parkingSystemService;
 
   //get all vehicle info
   @GetMapping("/vehicles")
-  public Iterable<Vehicle> vehicleInfo() {
-    return dbService.printInfo();
+  public List<Vehicle> displayVehicleInfo() {
+    return parkingSystemService.printVehicleInfo();
   }
 
   //add vehicle info
   @PostMapping("/vehicles")
-  public HttpEntity<String> addVehicleInfo(@RequestBody Vehicle vehicle) {
+  public HttpEntity<String> addVehicleInfoToDatabase(@RequestBody Vehicle vehicle) {
     try {
-      this.dbService.addInfo(vehicle);
+      this.parkingSystemService.addVehicleInfo(vehicle);
       return new ResponseEntity<>("Vehicle details added to the database",HttpStatus.OK);
     } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -36,14 +37,14 @@ public class ParkingSystemController {
 
   //update vehicle info
   @PutMapping("/vehicles/{id}")
-  public Optional<Vehicle> updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle) {
-    return this.dbService.updateInfo(id, vehicle);
+  public Optional<Vehicle> updateVehicleInfoInDatabase(@PathVariable Long id, @RequestBody Vehicle vehicle) {
+    return this.parkingSystemService.updateVehicleInfo(id, vehicle);
   }
 
 
   //Delete vehicle info
   @DeleteMapping("/vehicles/{id}")
-  public Map<String, Boolean> deleteVehicle(@PathVariable Long id) {
-    return this.dbService.deleteInfo(id);
+  public Map<String, Boolean> deleteVehicleInfoFromDatabase(@PathVariable Long id) {
+    return this.parkingSystemService.deleteVehicleInfo(id);
   }
 }
