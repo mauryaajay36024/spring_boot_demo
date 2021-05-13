@@ -1,6 +1,6 @@
-package com.near.springBoot.controller;
-import com.near.springBoot.core.Vehicle;
-import com.near.springBoot.services.DbService;
+package com.near.parkingsystem.controller;
+import com.near.parkingsystem.entity.Vehicle;
+import com.near.parkingsystem.service.ParkingSystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -13,19 +13,19 @@ import java.util.List;
 public class ParkingSystemController {
 
   @Autowired
-  private DbService dbService;
+  private ParkingSystemService parkingSystemService;
 
   //get all vehicle info
   @GetMapping("/vehicles")
-  public List<Vehicle> vehicleInfo(){
-    return dbService.printInfo();
+  public List<Vehicle> displayVehicleInfo(){
+    return parkingSystemService.printVehicleInfo();
   }
 
   //add vehicle info
   @PostMapping("/vehicles")
-  public HttpEntity<String> addVehicleInfo(@RequestBody Vehicle vehicle){
+  public HttpEntity<String> addVehicleInfoToDatabase(@RequestBody Vehicle vehicle){
     try {
-      this.dbService.addInfo(vehicle);
+      this.parkingSystemService.addVehicleInfo(vehicle);
       return new ResponseEntity<>(HttpStatus.OK);
 
     } catch (Exception e){
@@ -35,9 +35,9 @@ public class ParkingSystemController {
 
   //update vehicle info
   @PutMapping("/vehicles")
-  public ResponseEntity<String> updateVehicle(@RequestBody Vehicle vehicle){
+  public ResponseEntity<String> updateVehicleInfoInDatabase(@RequestBody Vehicle vehicle){
     try {
-      this.dbService.updateInfo(vehicle);
+      this.parkingSystemService.updateVehicleInfo(vehicle);
       return new ResponseEntity<>(HttpStatus.OK);
     } catch (Exception e){
     return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -46,9 +46,9 @@ public class ParkingSystemController {
 
   //Delete vehicle info
   @DeleteMapping("/vehicles/{regNo}")
-  public ResponseEntity<String> deleteVehicle(@PathVariable String regNo){
+  public ResponseEntity<String> deleteVehicleInfoFromDatabase(@PathVariable String regNo){
     try {
-      this.dbService.deleteInfo(regNo);
+      this.parkingSystemService.deleteVehicleInfo(regNo);
       return new ResponseEntity<>(HttpStatus.OK);
     } catch (Exception e){
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

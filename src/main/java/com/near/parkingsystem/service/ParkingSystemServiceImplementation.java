@@ -1,6 +1,6 @@
-package com.near.parkingsystem.services;
+package com.near.parkingsystem.service;
 
-import com.near.parkingsystem.core.Vehicle;
+import com.near.parkingsystem.entity.Vehicle;
 import com.near.parkingsystem.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,23 +13,23 @@ public class ParkingSystemServiceImplementation implements ParkingSystemService 
   private VehicleRepository vehicleRepository;
 
   @Override
-  public List<Vehicle> printInfo() {
+  public List<Vehicle> printVehicleInfo() {
     return vehicleRepository.findAll();
   }
 
   @Override
-  public Vehicle addInfo(Vehicle vehicle) {
+  public Vehicle addVehicleInfo(Vehicle vehicle) {
     vehicleRepository.save(vehicle);
     return vehicle;
   }
 
   @Override
-  public Vehicle updateInfo(Vehicle vehicle) {
+  public Vehicle updateVehicleInfo(Vehicle vehicle) {
     return vehicleRepository.save(vehicle);
   }
 
   @Override
-  public void deleteInfo(String regNo) {
+  public void deleteVehicleInfo(String regNo) {
     Vehicle entity=vehicleRepository.getOne(regNo);
     vehicleRepository.delete(entity);
   }

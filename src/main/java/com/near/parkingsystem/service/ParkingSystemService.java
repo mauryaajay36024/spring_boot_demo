@@ -1,15 +1,15 @@
-package com.near.parkingsystem.services;
-import com.near.parkingsystem.core.Vehicle;
+package com.near.parkingsystem.service;
+import com.near.parkingsystem.entity.Vehicle;
 
 import java.util.List;
 
 
 public interface ParkingSystemService {
-  List<Vehicle> printInfo();
+  List<Vehicle> printVehicleInfo();
 
-  Vehicle addInfo(Vehicle vehicle);
+  Vehicle addVehicleInfo(Vehicle vehicle);
 
-  Vehicle updateInfo(Vehicle vehicle);
+  Vehicle updateVehicleInfo(Vehicle vehicle);
 
-  void deleteInfo(String regNo);
+  void deleteVehicleInfo(String regNo);
 }

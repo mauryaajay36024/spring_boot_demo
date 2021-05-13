@@ -1,4 +1,4 @@
-package com.near.parkingsystem.core;
+package com.near.parkingsystem.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 

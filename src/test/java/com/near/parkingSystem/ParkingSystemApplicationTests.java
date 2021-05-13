@@ -1,4 +1,4 @@
-package com.near.springBoot;
+package com.near.parkingSystem;
 import org.junit.jupiter.api.Test;
 
 class ParkingSystemApplicationTests {
