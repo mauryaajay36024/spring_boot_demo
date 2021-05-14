@@ -41,7 +41,6 @@ public class ParkingSystemController {
     return this.parkingSystemService.updateVehicleInfo(id, vehicle);
   }
 
-
   //Delete vehicle info
   @DeleteMapping("/vehicles/{id}")
   public Map<String, Boolean> deleteVehicleInfoFromDatabase(@PathVariable Long id) {
