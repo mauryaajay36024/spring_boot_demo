@@ -13,7 +13,6 @@ public class Vehicle {
 
   public Vehicle() {
   }
-
   public Vehicle(String regNo, String colour) {
     this.regNo = regNo;
     this.colour = colour;
