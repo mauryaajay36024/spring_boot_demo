@@ -33,21 +33,21 @@ public class ParkingSystemServiceImpl implements ParkingSystemService {
 
   @Override
   public Optional<Vehicle> updateVehicleInfo(Long  id,Vehicle vehicleDetails){
-     Optional<Vehicle> veh = redisRepository.findById(id);
-     if(veh.isPresent()){
-       Vehicle vehicle=veh.get();
+     Optional<Vehicle> optionalVehicle = redisRepository.findById(id);
+     if(optionalVehicle.isPresent()){
+       Vehicle vehicle=optionalVehicle.get();
        vehicle.setRegNo(vehicleDetails.getRegNo());
        vehicle.setColour(vehicleDetails.getColour());
        redisRepository.save(vehicle);
      }
-     return veh;
+     return optionalVehicle;
 
   }
 
   @Override
   public Map<String, Boolean> deleteVehicleInfo(Long id) {
-    Optional<Vehicle> veh=redisRepository.findById(id);
-    Vehicle vehicle=veh.get();
+    Optional<Vehicle> optionalVehicle=redisRepository.findById(id);
+    Vehicle vehicle=optionalVehicle.get();
     redisRepository.delete(vehicle);
     Map<String,Boolean> response=new HashMap<>();
     response.put("Data Deleted",Boolean.TRUE);
