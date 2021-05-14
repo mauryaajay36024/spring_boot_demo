@@ -36,7 +36,6 @@ public class MongodbConfig {
     return builder.dataSource(dataSource).properties(properties)
         .packages("com.near.parkingSystem.mongodbDatabase.entity").persistenceUnit("Vehicle").build();
   }
-
   @Bean(name = "vehicleTransactionManager")
   public PlatformTransactionManager vehicleTransactionManager(
       @Qualifier("vehicleEntityManagerFactory") EntityManagerFactory bookEntityManagerFactory) {
