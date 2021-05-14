@@ -1,6 +1,5 @@
 package com.near.parkingSystem.services;
 import com.near.parkingSystem.redisDatabase.entity.Vehicle;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
