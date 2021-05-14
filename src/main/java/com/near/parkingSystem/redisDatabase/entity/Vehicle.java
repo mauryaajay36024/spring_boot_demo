@@ -2,7 +2,6 @@ package com.near.parkingSystem.redisDatabase.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
-
 @RedisHash("vehicle_info")
 public class Vehicle {
   @Id
@@ -12,7 +11,6 @@ public class Vehicle {
 
   public Vehicle() {
   }
-
   public Vehicle(String regNo, String colour) {
     this.regNo = regNo;
     this.colour = colour;
