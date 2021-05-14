@@ -40,7 +40,6 @@
 			<artifactId>jedis</artifactId>
 		</dependency>
 		<!--Mongodb Dependencies-->
-
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
