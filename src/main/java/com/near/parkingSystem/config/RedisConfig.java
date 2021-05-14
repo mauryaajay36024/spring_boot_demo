@@ -38,7 +38,6 @@ public class RedisConfig {
     return builder.dataSource(dataSource).properties(properties)
         .packages("com.near.parkingSystem.redisDatabase.entity").persistenceUnit("Vehicle").build();
   }
-
   @Primary
   @Bean(name = "transactionManager")
   public PlatformTransactionManager transactionManager(
