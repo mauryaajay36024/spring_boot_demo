@@ -1,8 +1,8 @@
 package com.near.parkingSystem.mongodbDatabase.entity;
 
-
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import javax.persistence.Id;
+
 
 @Document(collection= "parking_system")
 public class Vehicle {
