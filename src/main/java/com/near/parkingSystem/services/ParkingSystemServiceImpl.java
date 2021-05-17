@@ -1,12 +1,11 @@
 package com.near.parkingSystem.services;
-import com.near.parkingSystem.mongodbDatabase.repository.MongodbRepository;
+import com.near.parkingSystem.mysqlDatabase.repository.MysqlRepository;
 import com.near.parkingSystem.redisDatabase.entity.Vehicle;
+import com.near.parkingSystem.mysqlDatabase.entity.*;
 import com.near.parkingSystem.redisDatabase.repository.RedisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
 
 
@@ -17,7 +16,7 @@ public class ParkingSystemServiceImpl implements ParkingSystemService {
   private RedisRepository redisRepository;
 
   @Autowired
-  private MongodbRepository mongodbRepository;
+  private MysqlRepository mysqlRepository;
 
   @Override
   public List<Vehicle> printVehicleInfo() {
@@ -53,12 +52,5 @@ public class ParkingSystemServiceImpl implements ParkingSystemService {
     response.put("Data Deleted",Boolean.TRUE);
     return response;
   }
-
-  public static String repositoryName() throws IOException {
-    Properties properties=new Properties();
-    properties.load(new FileReader("src/main/resources/application.properties"));
-    return properties.getProperty("vehicleRepository");
-  }
-
 
 }
