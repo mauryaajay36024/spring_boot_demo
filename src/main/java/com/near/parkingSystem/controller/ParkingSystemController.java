@@ -7,9 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Properties;
 
 
 @RestController
@@ -46,4 +49,5 @@ public class ParkingSystemController {
   public Map<String, Boolean> deleteVehicleInfoFromDatabase(@PathVariable Long id) {
     return this.parkingSystemService.deleteVehicleInfo(id);
   }
+
 }
